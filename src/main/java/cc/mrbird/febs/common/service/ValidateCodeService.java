@@ -54,7 +54,7 @@ public class ValidateCodeService {
             throw new FebsException("验证码已过期");
         }
         if (!StringUtils.equalsIgnoreCase(value, String.valueOf(codeInRedis))) {
-            throw new FebsException("验证码不正确");
+            throw new FebsException("验证码不正确!");
         }
     }
 
