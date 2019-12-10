@@ -135,6 +135,7 @@
                 loading.show();
                 $.post(ctx + 'login', data.field, function (r) {
                     if (r.code === 200) {
+                        alert(ctx + 'index')
                         location.href = ctx + 'index';
                     } else {
                         alert(JSON.stringify(r.message))
