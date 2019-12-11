@@ -33,14 +33,13 @@ public class ViewController extends BaseController {
     private ShiroHelper shiroHelper;
 
     @GetMapping("login")
-    @ResponseBody
-    public Object login(HttpServletRequest request) {
+    public String login(HttpServletRequest request) {
         if (FebsUtil.isAjaxRequest(request)) {
             throw new ExpiredSessionException();
         } else {
-            ModelAndView mav = new ModelAndView();
-            mav.setViewName(FebsUtil.view("login"));
-            return mav;
+
+            return FebsUtil.view("login");
+
         }
     }
 
