@@ -106,12 +106,48 @@ layui.extend({
         }
     };
     self.flexible = function (open) {
+        // alert("我是侧边栏")
         if (open === true) {
             view.container.removeClass(self.shrinkCls)
         } else {
             view.container.addClass(self.shrinkCls)
         }
     };
+
+    //增加全屏功能 by steady
+    // self.fullscreen =function(othis){
+    //     alert(111)
+    //     var SCREEN_FULL = 'layui-icon-screen-full'
+    //         ,SCREEN_REST = 'layui-icon-screen-restore'
+    //         ,iconElem = othis.children("i");
+    //
+    //     if(iconElem.hasClass(SCREEN_FULL)){
+    //         var elem = document.body;
+    //         if(elem.webkitRequestFullScreen){
+    //             elem.webkitRequestFullScreen();
+    //         } else if(elem.mozRequestFullScreen) {
+    //             elem.mozRequestFullScreen();
+    //         } else if(elem.requestFullScreen) {
+    //             elem.requestFullscreen();
+    //         }
+    //
+    //         iconElem.addClass(SCREEN_REST).removeClass(SCREEN_FULL);
+    //     } else {
+    //         var elem = document;
+    //         if(elem.webkitCancelFullScreen){
+    //             elem.webkitCancelFullScreen();
+    //         } else if(elem.mozCancelFullScreen) {
+    //             elem.mozCancelFullScreen();
+    //         } else if(elem.cancelFullScreen) {
+    //             elem.cancelFullScreen();
+    //         } else if(elem.exitFullscreen) {
+    //             elem.exitFullscreen();
+    //         }
+    //
+    //         iconElem.addClass(SCREEN_FULL).removeClass(SCREEN_REST);
+    //     }
+    // }
+
     self.on = function (name, callback) {
         return layui.onevent(conf.eventName, 'system(' + name + ')', callback)
     };
@@ -193,6 +229,7 @@ layui.extend({
 
     function mobileAdapter() {
         self.flexible(false);
+
         var device = layui.device();
         if (device.weixin || device.android || device.ios) {
             //点击空白处关闭侧边栏

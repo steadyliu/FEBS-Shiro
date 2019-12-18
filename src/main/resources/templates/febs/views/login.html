@@ -135,10 +135,19 @@
                 loading.show();
                 $.post(ctx + 'login', data.field, function (r) {
                     if (r.code === 200) {
-                        alert(ctx + 'index')
-                        location.href = ctx + 'index';
+//                        alert(ctx + 'index')
+                        layer.msg("登录成功",{
+                            icon:1,
+                            shade: [0.8, '#393D49'],
+                            anim: 4
+
+                        })
+                        setTimeout(function () { //登录后一秒进行跳转
+                            location.href = ctx + 'index';
+                        },1000)
+
                     } else {
-                        alert(JSON.stringify(r.message))
+//                        alert(JSON.stringify(r.message))
                         layer.msg(r.message);
                         loading.hide();
                         initCode();

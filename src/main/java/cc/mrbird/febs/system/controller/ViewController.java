@@ -16,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -37,7 +35,6 @@ public class ViewController extends BaseController {
         if (FebsUtil.isAjaxRequest(request)) {
             throw new ExpiredSessionException();
         } else {
-
             return FebsUtil.view("login");
 
         }
@@ -167,4 +164,12 @@ public class ViewController extends BaseController {
         if (user.getLastLoginTime() != null)
             model.addAttribute("lastLoginTime", DateUtil.getDateFormat(user.getLastLoginTime(), DateUtil.FULL_TIME_SPLIT_PATTERN));
     }
+
+
+    @GetMapping(FebsConstant.VIEW_PREFIX + "system/user/steady")
+    @RequiresPermissions("user:view")
+    public String systemUserSteady() {
+        return FebsUtil.view("system/user/steady");
+    }
+
 }
